@@ -1,0 +1,37 @@
+name: Auto Forecast
+
+on:
+  schedule:
+    - cron: '0 12 * * *'   # jam 19 WIB
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install Python packages
+      run: |
+        pip install selenium pillow pytesseract
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y tesseract-ocr chromium-browser chromium-chromedriver
+
+    - name: Run script
+      run: python script.py
+
+    - name: Upload CSV hasil
+      uses: actions/upload-artifact@v4
+      with:
+        name: forecast-data
+        path: "*.csv"
