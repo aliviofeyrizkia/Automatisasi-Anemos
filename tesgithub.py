@@ -285,7 +285,7 @@ klik_accept_cookie(driver)
 time.sleep(2)
 
 driver.execute_script("window.scrollTo(0,900)")
-time.sleep(2)
+time.sleep(5)
 
 data_all = []
 
@@ -295,14 +295,17 @@ for model_name,model_value in MODEL.items():
 
     try:
 
-        btn = wait.until(
-            EC.element_to_be_clickable(
-                (By.CSS_SELECTOR,f"a.mod-btn[data-value='{model_value}']")
+        btn = WebDriverWait(driver,20).until(
+            EC.visibility_of_element_located(
+                (By.CSS_SELECTOR, f"a.mod-btn[data-value='{model_value}']")
             )
         )
 
+        driver.execute_script("arguments[0].scrollIntoView({block:'center'});", btn)
+        time.sleep(2)
+
         driver.execute_script("arguments[0].click();", btn)
-        time.sleep(4)
+        time.sleep(5)
 
     except:
         print("Model tidak ditemukan",model_name)
