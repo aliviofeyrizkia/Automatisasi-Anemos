@@ -35,6 +35,13 @@ def ambil_data():
     service = Service()
 
     options = webdriver.ChromeOptions()
+
+    import os
+    if os.path.exists("/usr/bin/chromium"):
+        options.binary_location = "/usr/bin/chromium"
+    elif os.path.exists("/usr/bin/chromium-browser"):
+        options.binary_location = "/usr/bin/chromium-browser"
+
     options.add_argument("--headless=new")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
@@ -264,6 +271,13 @@ def ambil_data_panel(text):
 
 
 options = Options()
+
+import os
+if os.path.exists("/usr/bin/chromium"):
+    options.binary_location = "/usr/bin/chromium"
+elif os.path.exists("/usr/bin/chromium-browser"):
+    options.binary_location = "/usr/bin/chromium-browser"
+
 options.add_argument("--headless=new")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
