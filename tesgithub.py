@@ -282,33 +282,66 @@ driver.get(URL)
 time.sleep(8)
 
 klik_accept_cookie(driver)
-time.sleep(2)
+time.sleep(5)
 
-driver.execute_script("window.scrollTo(0,900)")
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+time.sleep(5)
+
+driver.execute_script("window.scrollTo(0, 1200)")
 time.sleep(5)
 
 data_all = []
 
-for model_name,model_value in MODEL.items():
+for model_name, model_value in MODEL.items():
+    print("\nMODEL:", model_name)
 
-    print("MODEL:",model_name)
+    success = False
 
-    try:
+    for attempt in range(3):
+        try:
+            print(f"Percobaan {attempt+1} cari tombol...")
 
-        btn = WebDriverWait(driver,20).until(
-            EC.visibility_of_element_located(
-                (By.CSS_SELECTOR, f"a.mod-btn[data-value='{model_value}']")
-            )
-        )
+            # 🔥 scroll paksa load element
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+            time.sleep(3)
+            driver.execute_script("window.scrollTo(0, 1200)")
+            time.sleep(3)
 
-        driver.execute_script("arguments[0].scrollIntoView({block:'center'});", btn)
-        time.sleep(2)
+            # 🔥 ambil semua tombol
+            buttons = driver.find_elements(By.CSS_SELECTOR, "a.mod-btn")
 
-        driver.execute_script("arguments[0].click();", btn)
-        time.sleep(5)
+            print("Jumlah tombol ditemukan:", len(buttons))
 
-    except:
-        print("Model tidak ditemukan",model_name)
+            if len(buttons) == 0:
+                print("Tombol belum muncul, retry...")
+                time.sleep(3)
+                continue
+
+            for btn in buttons:
+                val = btn.get_attribute("data-value")
+                print("Ditemukan tombol:", val)
+
+                if val == model_value:
+                    print("Klik model:", model_name)
+
+                    driver.execute_script("arguments[0].scrollIntoView({block:'center'});", btn)
+                    time.sleep(2)
+
+                    driver.execute_script("arguments[0].click();", btn)
+                    time.sleep(5)
+
+                    success = True
+                    break
+
+            if success:
+                break
+
+        except Exception as e:
+            print("Error klik model:", e)
+            time.sleep(3)
+
+    if not success:
+        print("Model gagal total:", model_name)
         continue
 
     panels = driver.find_elements(By.CSS_SELECTOR,"div.panel.panel-days")
