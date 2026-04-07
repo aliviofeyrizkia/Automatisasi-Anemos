@@ -2,7 +2,7 @@ name: Auto Forecast
 
 on:
   schedule:
-    - cron: '0 12 * * *'   # jam 19 WIB
+    - cron: '0 11 * * *'   # jam 18 WIB
   workflow_dispatch:
 
 jobs:
