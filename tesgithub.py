@@ -252,16 +252,16 @@ def ambil_data_panel(text):
     for i,line in enumerate(lines):
 
         if line.strip()=="Temperature":
-            temperature = lines[i+1]
+            temperature = lines[i+1] if i+1 < len(lines) else ""
 
         if line.strip()=="Humidity":
-            humidity = lines[i+1]
+            humidity = lines[i+1] if i+1 < len(lines) else ""
 
         if line.strip()=="Precipitation":
-            rain = lines[i+1]
+            rain = lines[i+1] if i+1 < len(lines) else ""
 
         if line.strip()=="Wind":
-            wind = lines[i+1]
+            wind = lines[i+1] if i+1 < len(lines) else ""
 
     return temperature,humidity,rain,wind
 
@@ -490,13 +490,18 @@ import math
 import re
 
 def parse_temp(t):
-    return float(re.findall(r"\d+\.?\d*", t)[0])
+    nums = re.findall(r"\d+\.?\d*", t)
+    return float(nums[0]) if nums else 0.0
 
 def parse_rh(r):
-    return float(re.findall(r"\d+", r)[0])
+    nums = re.findall(r"\d+", r)
+    return float(nums[0]) if nums else 0.0
 
 def parse_rain(r):
-    return float(re.findall(r"\d+\.?\d*", r)[0])
+    nums = re.findall(r"\d+\.?\d*", r)
+    if len(nums) == 0:
+        return 0.0
+    return float(nums[0])
 
 def convert_jam(j):
     j = j.strip().lower()
