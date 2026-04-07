@@ -8,7 +8,9 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
-
+    permissions:
+    
+      contents: write
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
@@ -31,6 +33,15 @@ jobs:
       run: |
         python dago.py
         python jatinangor.py
+
+    - name: Commit CSV ke repo
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "actions@github.com"
+    
+        git add *.csv
+        git commit -m "update forecast data" || echo "no changes"
+        git push
         
     - name: Upload CSV hasil
       uses: actions/upload-artifact@v4
