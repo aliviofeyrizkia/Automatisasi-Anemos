@@ -147,14 +147,14 @@ if hasil:
 
     besok_obj = datetime.now() + timedelta(days=1)
 
-    with open("bmkg_dago.csv","w",newline="",encoding="utf8") as f:
+    with open("bmkg_nangor.csv","w",newline="",encoding="utf8") as f:
         writer = csv.writer(f)
         writer.writerow(["tanggal","jam","suhu_C","cuaca","RH_%"])
 
         for jam, data in hasil.items():
             writer.writerow([besok_obj.strftime("%d-%m-%Y"), jam, *data])
 
-    print("\nCSV BERHASIL DISIMPAN → bmkg_dago.csv\n")
+    print("\nCSV BERHASIL DISIMPAN → bmkg_nangor.csv\n")
 
 else:
     print("Tidak ada data untuk disimpan.")
@@ -464,7 +464,7 @@ with open("forecast_filtered_debug.csv","w",newline="",encoding="utf8") as f:
 
 print("DEBUG → forecast_filtered_debug.csv tersimpan")
 
-with open("forecast_dago.csv","w",newline="",encoding="utf8") as f:
+with open("forecast_nangor.csv","w",newline="",encoding="utf8") as f:
 
     writer = csv.writer(f)
 
@@ -479,7 +479,7 @@ with open("forecast_dago.csv","w",newline="",encoding="utf8") as f:
 
     writer.writerows(data_filtered)
 
-print("Selesai → forecast_dago.csv")
+print("Selesai → forecast_nangor.csv")
 
 
 # =========================================
@@ -539,7 +539,7 @@ def bmkg_to_kategori(cuaca):
         return "Berawan"
 
 bmkg_data = {}
-with open("bmkg_dago.csv") as f:
+with open("bmkg_nangor.csv") as f:
     for row in csv.DictReader(f):
         cuaca = row["cuaca"]
 
@@ -552,7 +552,7 @@ with open("bmkg_dago.csv") as f:
 
 forecast_data = defaultdict(list)
 
-with open("forecast_dago.csv") as f:
+with open("forecast_nangor.csv") as f:
     for row in csv.DictReader(f):
         try:
             jam = convert_jam(row["Jam"]).strip()
@@ -636,7 +636,7 @@ for jam in sorted(set(bmkg_data) | set(forecast_data)):
 
 today = datetime.now().strftime("%Y%m%d")
 
-with open(f"ensemble_dago_{today}.csv","w",newline="",encoding="utf8") as f:
+with open(f"ensemble_nangor_{today}.csv","w",newline="",encoding="utf8") as f:
     writer = csv.writer(f)
     writer.writerow([
         "jam",
@@ -651,7 +651,7 @@ with open(f"ensemble_dago_{today}.csv","w",newline="",encoding="utf8") as f:
     ])
     writer.writerows(ensemble)
 
-print(f"\nENSEMBLE SUKSES → ensemble_dago_{today}.csv\n")
+print(f"\nENSEMBLE SUKSES → ensemble_nangor_{today}.csv\n")
 
 # =========================================
 # ===== CSV KHUSUS CANVA (1 HARI 1 BARIS) ==
@@ -660,7 +660,7 @@ print(f"\nENSEMBLE SUKSES → ensemble_dago_{today}.csv\n")
 import csv
 
 # baca hasil ensemble
-with open(f"ensemble_dago_{today}.csv") as f:
+with open(f"ensemble_nangor_{today}.csv") as f:
     data = list(csv.DictReader(f))
 
 # siapkan 1 baris
@@ -676,9 +676,9 @@ for i, d in enumerate(data):
     row[f"hujan_ringan{idx}"] = d["%hujan_ringan"]
 
 # simpan CSV baru
-with open("canva_dago.csv","w",newline="",encoding="utf8") as f:
+with open("canva_nangor.csv","w",newline="",encoding="utf8") as f:
     writer = csv.DictWriter(f, fieldnames=row.keys())
     writer.writeheader()
     writer.writerow(row)
 
-print("CSV Canva siap → canva_dago.csv")
+print("CSV Canva siap → canva_nangor.csv")
