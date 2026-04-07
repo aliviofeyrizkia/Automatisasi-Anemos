@@ -28,8 +28,10 @@ jobs:
         sudo apt-get install -y tesseract-ocr chromium-browser chromium-chromedriver
 
     - name: Run script
-      run: python tesgithub.py
-
+      run: |
+        python tesgithub.py
+        python jatinangor.py
+        
     - name: Upload CSV hasil
       uses: actions/upload-artifact@v4
       with:
