@@ -33,6 +33,7 @@ jobs:
       run: |
         python dago.py
         python jatinangor.py
+        python cirebon.py
 
     - name: Commit CSV ke repo
       run: |
