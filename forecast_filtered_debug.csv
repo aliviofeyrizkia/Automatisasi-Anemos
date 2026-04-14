@@ -1,16 +1,16 @@
 Model,Jam,Temperature,Humidity,Rain,Wind
-ICON,10:00am,29.6°C,69%,,
-ICON,01:00pm,30.1°C,69%,,
-ICON,04:00pm,28.5°C,74%,,
-ICON,07:00pm,24.9°C,91%,,
-ICON,10:00pm,24.2°C,89%,,
-GFS,10:00am,29.6°C,66%,0.3mm,Gusts
-GFS,01:00pm,28.8°C,71%,1.6mm,Gusts
-GFS,04:00pm,26.5°C,80%,1.8mm,Gusts
-GFS,07:00pm,24.9°C,87%,,
-GFS,10:00pm,24.8°C,86%,0.9mm,
-ECMWF,10:00am,28.6°C,75%,0 mm,
-ECMWF,01:00pm,28.9°C,75%,0.3mm,
-ECMWF,04:00pm,29.2°C,72%,0 mm,
-ECMWF,07:00pm,27.9°C,79%,0 mm,
-ECMWF,10:00pm,26.2°C,85%,2.0mm,
+ICON,10:00am,30.4°C,65%,,
+ICON,01:00pm,30.4°C,67%,0.1mm,
+ICON,04:00pm,28.1°C,78%,,
+ICON,07:00pm,24.8°C,93%,,
+ICON,10:00pm,23.9°C,90%,,
+GFS,10:00am,29.5°C,67%,0.8mm,Gusts
+GFS,01:00pm,29.2°C,70%,1.2mm,Gusts
+GFS,04:00pm,26.8°C,81%,1.5mm,Gusts
+GFS,07:00pm,24.8°C,88%,2.1mm,Gusts
+GFS,10:00pm,24.7°C,85%,0.6mm,Mean wind speed 10min
+ECMWF,10:00am,28.1°C,77%,0 mm,
+ECMWF,01:00pm,28.8°C,75%,0 mm,
+ECMWF,04:00pm,29.3°C,73%,0 mm,
+ECMWF,07:00pm,27.2°C,83%,0.2mm,
+ECMWF,10:00pm,26.0°C,87%,1.0mm,
