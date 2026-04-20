@@ -1,16 +1,11 @@
 Model,Jam,Temperature,Humidity,Rain,Wind
-ICON,10:00am,27.1°C,71%,,
-ICON,01:00pm,26.8°C,81%,1.5mm,Gusts
-ICON,04:00pm,24.3°C,89%,,
-ICON,07:00pm,22.7°C,94%,,
-ICON,10:00pm,22.4°C,95%,,
-GFS,10:00am,29.1°C,62%,0.2mm,
-GFS,01:00pm,27.9°C,70%,1.3mm,Gusts
-GFS,04:00pm,24.4°C,90%,1.3mm,
-GFS,07:00pm,22.6°C,95%,0.8mm,
-GFS,10:00pm,21.8°C,96%,0.4mm,
-ECMWF,10:00am,27.8°C,66%,0 mm,
-ECMWF,01:00pm,28.2°C,65%,0.3mm,
-ECMWF,04:00pm,23.9°C,88%,0.6mm,Gusts
-ECMWF,07:00pm,22.4°C,96%,0 mm,Gusts
-ECMWF,10:00pm,22.2°C,96%,0 mm,Gusts
+ICON,10:00am,26.9°C,75%,,
+ICON,01:00pm,27.1°C,78%,,
+ICON,04:00pm,25.0°C,85%,,
+ICON,07:00pm,22.5°C,96%,,
+ICON,10:00pm,21.9°C,96%,0 mm,Gusts
+ECMWF,10:00am,26.0°C,81%,6.6mm,Gusts
+ECMWF,01:00pm,26.3°C,81%,0.6mm,
+ECMWF,04:00pm,22.8°C,97%,2.2mm,Gusts
+ECMWF,07:00pm,22.2°C,97%,,
+ECMWF,10:00pm,21.6°C,93%,0 mm,Gusts
